@@ -45,6 +45,7 @@ class _userInputPageState extends State<userInputPage> {
                 ),
               ),
               //SearchScreen(),
+              grey_grid(),
               Container(
                 height: 92,
                 width: 350,
