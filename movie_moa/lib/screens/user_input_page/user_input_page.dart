@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_moa/constants/colors.dart';
 import 'package:movie_moa/screens/home/widgets/grey_grid.dart';
+import 'package:movie_moa/screens/search_screen/search_object_list.dart';
 import 'package:movie_moa/screens/search_screen/search_screens.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/additional_option.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/confirm_button.dart';
@@ -8,9 +9,14 @@ import 'package:movie_moa/screens/user_input_page/widgets/option_selection.dart'
 import 'package:movie_moa/screens/user_view_page/widgets/upper_title.dart';
 import 'package:movie_moa/widgets/app_bar.dart';
 
-class User_Input_Page extends StatelessWidget {
-  //const user_input_page({ Key? key }) : super(key: key);
+class userInputPage extends StatefulWidget {
+  const userInputPage({Key? key}) : super(key: key);
 
+  @override
+  _userInputPageState createState() => _userInputPageState();
+}
+
+class _userInputPageState extends State<userInputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +31,26 @@ class User_Input_Page extends StatelessWidget {
           grey_grid(),
           Column(
             children: [
-              Option_Selection(
+              /* Option_Selection(
                 hintText: "영화 검색",
                 icon: Icon(Icons.movie_outlined),
-                onChanged: (value) {},
+                onChanged: (value) => ObjectList(),
+              ),*/
+
+              Container(
+                height: 92,
+                width: 350,
+                child: ObjectList(
+                  hintext: "영화 검색",
+                ),
               ),
-              Option_Selection(
-                hintText: "장소 검색",
-                icon: Icon(Icons.map_outlined),
-                onChanged: (value) {},
+              //SearchScreen(),
+              Container(
+                height: 92,
+                width: 350,
+                child: ObjectList(
+                  hintext: "장소 검색",
+                ),
               ),
               Option_Selection(
                 hintText: "시간 검색",
@@ -43,6 +60,7 @@ class User_Input_Page extends StatelessWidget {
               /*
               option Selection 함수는 2 page 입력 란.
                */
+              grey_grid(),
               Container(
                 padding: EdgeInsets.fromLTRB(0, 50, 0, 10),
                 alignment: Alignment.center,
@@ -62,6 +80,6 @@ class User_Input_Page extends StatelessWidget {
           ),
         ],
       ),
-    ); //page_2
+    );
   }
 }

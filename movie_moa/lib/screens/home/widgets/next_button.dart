@@ -19,7 +19,7 @@ class Next_Button extends StatelessWidget {
         child: Text('Next'),
       ),
       onPressed: () => Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => User_Input_Page())),
+          .push(MaterialPageRoute(builder: (context) => userInputPage())),
     );
   }
 }

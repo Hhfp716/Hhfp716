@@ -35,16 +35,20 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      reverse: false,
+      child: Column(
         children: <Widget>[
           Container(
               color: Colors.white,
-              padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
-              child: Row(
+              //padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+              width: 300,
+              height: 70,
+              child: Column(
                 children: <Widget>[
                   Expanded(
-                    flex: 6,
+                    flex: 3,
                     child: TextField(
                       focusNode: focusNode,
                       autofocus: true,
@@ -109,34 +113,6 @@ class _SearchScreenState extends State<SearchScreen> {
                       : Expanded(flex: 0, child: Container())
                 ],
               )),
-          Container(
-              constraints:
-                  BoxConstraints.expand(width: 100, height: double.maxFinite),
-              width: double.maxFinite,
-              height: double.maxFinite,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Container(
-                        margin: EdgeInsets.all(10.0),
-                        constraints: BoxConstraints.expand(
-                            width: 100, height: double.maxFinite),
-                        //height: double.maxFinite,
-                        //width: double.maxFinite,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CircleAvatar(
-                              child: Icon(Icons.circle_outlined),
-                            ),
-                            SizedBox(width: 5),
-                            Text('data',
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold))
-                          ],
-                        ));
-                  })),
         ],
       ),
     );
