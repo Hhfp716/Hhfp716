@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_moa/constants/colors.dart';
 import 'package:movie_moa/screens/home/widgets/grey_grid.dart';
 import 'package:movie_moa/screens/search_screen/search_object_list.dart';
-import 'package:movie_moa/screens/search_screen/search_screens.dart';
+import 'package:movie_moa/tmp/search_screens.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/additional_option.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/confirm_button.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/option_selection.dart';
@@ -40,8 +40,8 @@ class _userInputPageState extends State<userInputPage> {
               Container(
                 height: 92,
                 width: 350,
-                child: ObjectList(
-                  hintext: "영화 검색",
+                child: SearchFunction(
+                  hintText: "영화 검색",
                 ),
               ),
               //SearchScreen(),
@@ -49,8 +49,8 @@ class _userInputPageState extends State<userInputPage> {
               Container(
                 height: 92,
                 width: 350,
-                child: ObjectList(
-                  hintext: "장소 검색",
+                child: SearchFunction(
+                  hintText: "장소 검색",
                 ),
               ),
               Option_Selection(

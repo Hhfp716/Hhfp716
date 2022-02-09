@@ -5,16 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:movie_moa/constants/colors.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
-class SearchFunction extends StatefulWidget {
-  SearchFunction({Key? key, required this.hintText}) : super(key: key);
+class SearchFunction_ extends StatefulWidget {
+  SearchFunction_({Key? key, required this.hintText}) : super(key: key);
 
   final String hintText;
 
   @override
-  _SearchFunctionState createState() => _SearchFunctionState();
+  _SearchFunction_State createState() => _SearchFunction_State();
 }
 
-class _SearchFunctionState extends State<SearchFunction> {
+class _SearchFunction_State extends State<SearchFunction_> {
   bool isLoading = false;
   late List<String> autoCompleteData;
   late TextEditingController controller;

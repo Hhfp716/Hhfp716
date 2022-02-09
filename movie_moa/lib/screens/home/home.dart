@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_moa/tmp/on_off_button.dart';
+import 'package:movie_moa/screens/etcService/login_success_page/login_success_page.dart';
 
 import 'package:movie_moa/screens/etcService/my_page.dart';
 
@@ -24,9 +26,10 @@ class HomePage extends StatelessWidget {
         ],
       ),
       tabBuilder: (context, index) {
+        Widget page;
         switch (index) {
           case 0:
-            return CupertinoTabView(
+            page = CupertinoTabView(
               builder: (context) {
                 return CupertinoPageScaffold(
                     child: HomePageUi()); /*홈페이지 서비스 기본 페이지 코드*/
@@ -35,15 +38,17 @@ class HomePage extends StatelessWidget {
             break;
 
           case 1:
-            return CupertinoTabView(
+            page = CupertinoTabView(
               builder: (context) {
                 return CupertinoPageScaffold(child: MyPage()); /*마이페이지 창으로 이동*/
               },
             );
+            break;
 
           default:
-            return const CupertinoTabView();
+            return const MyPage();
         }
+        return page;
       },
     );
   }

@@ -4,6 +4,8 @@ import 'package:movie_moa/component/rounded_button.dart';
 import 'package:movie_moa/component/rounded_input_field.dart';
 import 'package:movie_moa/component/rounded_password_field.dart';
 import 'package:movie_moa/screens/etcService/login_page/background.dart';
+import 'package:movie_moa/screens/etcService/login_success_page/login_success_page.dart';
+
 import 'package:movie_moa/screens/etcService/sign_up_page/sign_up_page.dart';
 
 class Body extends StatelessWidget {
@@ -57,7 +59,12 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {},
+              press: () {
+                if (id_check == true && passwd_check == true) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => loginSuccessScreen()));
+                }
+              },
             ),
             SizedBox(
               height: size.height * 0.03,
