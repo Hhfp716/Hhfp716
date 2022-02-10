@@ -3,7 +3,6 @@ import 'package:movie_moa/screens/search_screen/search_object_list.dart';
 import 'package:movie_moa/tmp/on_off_button.dart';
 import 'package:movie_moa/screens/etcService/detail_profile/detail_profile.dart';
 import 'package:movie_moa/screens/etcService/widgets/profile_bar.dart';
-import 'package:movie_moa/tmp/search+history.dart';
 
 class loginSuccessScreen extends StatefulWidget {
   const loginSuccessScreen({
@@ -52,7 +51,7 @@ class _loginSuccessScreenState extends State<loginSuccessScreen> {
                   width: 350,
                   child: Stack(
                     children: [
-                      SearchFunction_(
+                      SearchFunction(
                         hintText: "선호하는 장소 검색",
                       ),
                     ],

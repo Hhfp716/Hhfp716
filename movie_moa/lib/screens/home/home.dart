@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_moa/tmp/on_off_button.dart';
-import 'package:movie_moa/screens/etcService/login_success_page/login_success_page.dart';
 
 import 'package:movie_moa/screens/etcService/my_page.dart';
 

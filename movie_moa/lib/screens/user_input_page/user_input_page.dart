@@ -17,6 +17,12 @@ class userInputPage extends StatefulWidget {
 }
 
 class _userInputPageState extends State<userInputPage> {
+  late String _selectedTime;
+  @override
+  void initState() {
+    _selectedTime = '00시 00분';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +46,12 @@ class _userInputPageState extends State<userInputPage> {
               Container(
                 height: 92,
                 width: 350,
-                child: SearchFunction(
-                  hintText: "영화 검색",
+                child: Stack(
+                  children: [
+                    SearchFunction(
+                      hintText: "영화 검색",
+                    ),
+                  ],
                 ),
               ),
               //SearchScreen(),
@@ -49,32 +59,95 @@ class _userInputPageState extends State<userInputPage> {
               Container(
                 height: 92,
                 width: 350,
-                child: SearchFunction(
-                  hintText: "장소 검색",
+                child: Stack(
+                  children: [
+                    SearchFunction(
+                      hintText: "선호하는 장소 검색",
+                    ),
+                  ],
                 ),
               ),
               Option_Selection(
-                hintText: "시간 검색",
+                hintText: "현재 설정된 시각은 $_selectedTime 입니다.",
                 icon: Icon(Icons.access_time_outlined),
                 onChanged: (value) {},
               ),
+              //* textfield에서 수정중...
+              // RichText(
+              //         text: TextSpan(
+              //           children: [
+              //             TextSpan(text: ''),
+              //             WidgetSpan(
+              //               child: Padding(
+              //                 padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              //                 child: Icon(Icons.access_time_outlined),
+              //               ),
+              //             ),
+              //             TextSpan(text: '현재 설정된 시각은 $_selectedTime 입니다.'),
+              //           ],
+              //         ),
+              //       ),
+              ElevatedButton(
+                child: Text('시간 설정하기',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    )),
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 241, 172, 195),
+                  onPrimary: Colors.black,
+                ),
+                onPressed: () {
+                  Future<TimeOfDay?> selectedTime = showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                    builder: (context, child) {
+                      return Theme(
+                        data: ThemeData.light().copyWith(
+                          colorScheme: ColorScheme.light(
+                            primary: Color.fromARGB(255, 221, 88, 190),
+                            onSurface: Color.fromARGB(255, 214, 132, 170),
+                          ),
+                          buttonTheme: ButtonThemeData(
+                            colorScheme:
+                                ColorScheme.light(primary: Colors.black),
+                          ),
+                        ),
+                        child: child!,
+                      );
+                    },
+                  );
+                  selectedTime.then((timeOfDay) {
+                    setState(() {
+                      // _selectedTime = '${timeOfDay?.hour}시  ${timeOfDay?.minute}분';
+                      if (timeOfDay?.minute == 0) {
+                        _selectedTime =
+                            '${timeOfDay?.hour}시  ${timeOfDay?.minute}0분';
+                      } else {
+                        _selectedTime =
+                            '${timeOfDay?.hour}시  ${timeOfDay?.minute}분';
+                      }
+                    });
+                  });
+                },
+              ),
+              // Text('$_selectedTime'),
               /*
               option Selection 함수는 2 page 입력 란.
                */
               grey_grid(),
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 50, 0, 10),
-                alignment: Alignment.center,
-                child: Text('+추가조건설정',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    )),
-              ),
-              Additional_Option(),
-              /*추가 옵션 설정 부분 */
-              SizedBox(height: 30),
-              grey_grid(),
+              // Container(
+              //   padding: EdgeInsets.fromLTRB(0, 50, 0, 10),
+              //   alignment: Alignment.center,
+              //   child: Text('+추가조건설정',
+              //       style: TextStyle(
+              //         fontSize: 25,
+              //         fontWeight: FontWeight.bold,
+              //       )),
+              // ),
+              // Additional_Option(),
+              // /*추가 옵션 설정 부분 */
+              // SizedBox(height: 30),
+              // grey_grid(),
               Confirm_Button(),
               grey_grid(),
             ],
