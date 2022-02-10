@@ -10,7 +10,11 @@ class loginSuccessScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _loginSuccessScreenState createState() => _loginSuccessScreenState();
+  _loginSuccessScreenState createState() {
+    return _loginSuccessScreenState();
+  }
+  // @override
+  // _loginSuccessScreenState createState() => _loginSuccessScreenState();
 }
 
 class _loginSuccessScreenState extends State<loginSuccessScreen> {

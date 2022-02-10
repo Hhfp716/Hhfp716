@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_moa/screens/etcService/login_page/login_page.dart';
 import 'package:movie_moa/screens/etcService/my_page.dart';
 
 class book_mark extends StatelessWidget {
@@ -31,7 +32,7 @@ class book_mark extends StatelessWidget {
             ],
           ),
           onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => MyPage())),
+              .push(MaterialPageRoute(builder: (context) => LoginScreen())),
         ),
       ],
     );
