@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_moa/component/login_check.dart';
 import 'package:movie_moa/screens/etcService/login_page/login_page.dart';
+import 'package:movie_moa/screens/etcService/login_success_page/login_success_page.dart';
 import 'package:movie_moa/screens/etcService/my_page.dart';
 
 class book_mark extends StatelessWidget {
@@ -31,8 +33,18 @@ class book_mark extends StatelessWidget {
               )
             ],
           ),
-          onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => LoginScreen())),
+          onPressed: () => {
+            if (id_check & passwd_check)
+              {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => loginSuccessScreen())),
+              }
+            else
+              {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LoginScreen()))
+              }
+          },
         ),
       ],
     );

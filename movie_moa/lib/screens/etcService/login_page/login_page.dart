@@ -19,15 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
       children: [
         CustomAppBar(),
         Column(
-          children: (id_check & passwd_check)
-              ? [loginSuccessScreen()]
-              : [Body(id_check: id_check, passwd_check: passwd_check)],
+          children: [Body()],
         )
       ],
     ));
   }
 }
-/*class LoginScreen extends StatelessWidget {
+/*
+class LoginScreen extends StatelessWidget {
   late LoginValidation loginValidation;
   @override
   Widget build(BuildContext context) {

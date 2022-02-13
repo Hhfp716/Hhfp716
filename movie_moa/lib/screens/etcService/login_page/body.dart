@@ -12,13 +12,13 @@ import 'package:movie_moa/screens/etcService/sign_up_page/sign_up_page.dart';
 class Body extends StatelessWidget {
   String id = 'abc';
   String passwd = '1234';
-  late final bool id_check;
-  late final bool passwd_check;
+  //late final bool id_check;
+  //late final bool passwd_check;
 
   Body({
     Key? key,
-    required this.id_check,
-    required this.passwd_check,
+    //required this.id_check,
+    //required this.passwd_check,
   }) : super(key: key);
 
   @override
