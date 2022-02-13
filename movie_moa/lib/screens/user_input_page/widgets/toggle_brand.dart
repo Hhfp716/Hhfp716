@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movie_moa/screens/home/widgets/grey_grid.dart';
 
-class ToggleSwitch extends StatefulWidget {
+class ToggleBrand extends StatefulWidget {
   @override
-  _ToggleSwitchState createState() => _ToggleSwitchState();
+  _ToggleBrandState createState() => _ToggleBrandState();
 }
 
-class _ToggleSwitchState extends State<ToggleSwitch> {
+class _ToggleBrandState extends State<ToggleBrand> {
   //final _OptionList = ['영화','장소', '시간'];
   final List<bool> _selections = List.generate(3, (index) => false);
   @override
@@ -25,7 +25,7 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
                   RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: '      영화    '),
+                        TextSpan(text: '     CGV   '),
                         WidgetSpan(
                           child: Padding(
                             padding:
@@ -40,12 +40,12 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
                   RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: '      장소    '),
+                        TextSpan(text: '     Lotte Cinema    '),
                         WidgetSpan(
                           child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 2.0),
-                            child: Icon(Icons.location_city),
+                            child: Icon(Icons.movie),
                           ),
                         ),
                         TextSpan(text: '      '),
@@ -55,12 +55,12 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
                   RichText(
                     text: TextSpan(
                       children: [
-                        TextSpan(text: '      시간    '),
+                        TextSpan(text: '      Mega box    '),
                         WidgetSpan(
                           child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 2.0),
-                              child: Icon(Icons.access_time_outlined)),
+                              child: Icon(Icons.movie)),
                         ),
                         TextSpan(text: '      '),
                       ],

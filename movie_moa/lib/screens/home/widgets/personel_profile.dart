@@ -7,6 +7,9 @@ class book_mark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
+    final width = data.size.width;
+    final height = data.size.height;
     return Column(
       children: [
         RawMaterialButton(
@@ -16,15 +19,15 @@ class book_mark extends StatelessWidget {
               Icon(
                 Icons.star_border_outlined,
                 color: Color(0xFFFDBF30),
-                size: 25,
+                size: width*0.06,
               ),
               Container(
                 alignment: Alignment.center,
                 //decoration
                 child: Text(
-                  '개인프로필',
+                  ' 개인프로필',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: width * 0.04,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

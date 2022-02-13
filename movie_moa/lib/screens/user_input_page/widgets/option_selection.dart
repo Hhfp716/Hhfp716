@@ -5,7 +5,7 @@ import 'package:movie_moa/screens/home/widgets/grey_grid.dart';
 
 class Option_Selection extends StatelessWidget {
   // const Option_Selection({Key? key}) : super(key: key);
-
+  
   final String hintText;
   final Icon icon;
   final ValueChanged<String> onChanged;
@@ -22,11 +22,11 @@ class Option_Selection extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       //padding:,
-      decoration: BoxDecoration(
-          color: kBackgroundColor,
-          border: Border.all(
-            color: Colors.grey,
-          )),
+      // decoration: BoxDecoration(
+      //     color: kBackgroundColor,
+      //     border: Border.all(
+      //       color: Colors.grey,
+      //     )),
       child: RoundedInputField(
         hintText: hintText,
         icon: icon,

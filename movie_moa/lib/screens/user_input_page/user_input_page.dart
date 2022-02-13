@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:movie_moa/constants/colors.dart';
 import 'package:movie_moa/screens/home/widgets/grey_grid.dart';
 import 'package:movie_moa/screens/search_screen/search_object_list.dart';
+import 'package:movie_moa/screens/user_input_page/widgets/toggle_brand.dart';
 import 'package:movie_moa/tmp/search_screens.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/additional_option.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/confirm_button.dart';
 import 'package:movie_moa/screens/user_input_page/widgets/option_selection.dart';
 import 'package:movie_moa/screens/user_view_page/widgets/upper_title.dart';
 import 'package:movie_moa/widgets/app_bar.dart';
+import 'package:movie_moa/component/toggleSwitch.dart';
 
 class userInputPage extends StatefulWidget {
   const userInputPage({Key? key}) : super(key: key);
@@ -25,6 +27,10 @@ class _userInputPageState extends State<userInputPage> {
 
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
+    final width = data.size.width;
+    final height = data.size.height;
+    double count = 0.0;
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Column(
@@ -37,15 +43,9 @@ class _userInputPageState extends State<userInputPage> {
           grey_grid(),
           Column(
             children: [
-              /* Option_Selection(
-                hintText: "영화 검색",
-                icon: Icon(Icons.movie_outlined),
-                onChanged: (value) => ObjectList(),
-              ),*/
-
               Container(
-                height: 92,
-                width: 350,
+                height: height * 0.115,
+                width: width,
                 child: Stack(
                   children: [
                     SearchFunction(
@@ -56,9 +56,11 @@ class _userInputPageState extends State<userInputPage> {
               ),
               //SearchScreen(),
               grey_grid(),
+              SizedBox(height: height * 0.03),
+              grey_grid(),
               Container(
-                height: 92,
-                width: 350,
+                height: height * 0.115,
+                width: width,
                 child: Stack(
                   children: [
                     SearchFunction(
@@ -67,33 +69,32 @@ class _userInputPageState extends State<userInputPage> {
                   ],
                 ),
               ),
+              grey_grid(),
+              SizedBox(height: height * 0.03),
               Option_Selection(
-                hintText: "현재 설정된 시각은 $_selectedTime 입니다.",
+                hintText: "현재 설정된 시각은 $_selectedTime 입니다. \n 시간을 변경하려면 아래 아이콘을 눌러주세요.",
                 icon: Icon(Icons.access_time_outlined),
                 onChanged: (value) {},
               ),
-              //* textfield에서 수정중...
-              // RichText(
-              //         text: TextSpan(
-              //           children: [
-              //             TextSpan(text: ''),
-              //             WidgetSpan(
-              //               child: Padding(
-              //                 padding: const EdgeInsets.symmetric(horizontal: 2.0),
-              //                 child: Icon(Icons.access_time_outlined),
-              //               ),
-              //             ),
-              //             TextSpan(text: '현재 설정된 시각은 $_selectedTime 입니다.'),
-              //           ],
-              //         ),
-              //       ),
               ElevatedButton(
-                child: Text('시간 설정하기',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    )),
+                // child: Icon(Icons.timer),
+                child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(text: '시간을 변경하시려면 눌러주세요    '),
+                        WidgetSpan(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 2.0),
+                            child: Icon(Icons.timer),
+                          ),
+                        ),
+                        TextSpan(text: ''),
+                      ],
+                    ),
+                  ),
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromARGB(255, 241, 172, 195),
+                  primary: Colors.white,
                   onPrimary: Colors.black,
                 ),
                 onPressed: () {
@@ -121,35 +122,48 @@ class _userInputPageState extends State<userInputPage> {
                       // _selectedTime = '${timeOfDay?.hour}시  ${timeOfDay?.minute}분';
                       if (timeOfDay?.minute == 0) {
                         _selectedTime =
-                            '${timeOfDay?.hour}시  ${timeOfDay?.minute}0분';
+                            '${timeOfDay?.hour}시 ${timeOfDay?.minute}0분';
+                      } else if (timeOfDay?.hour == 0) {
+                        _selectedTime = 
+                        '${timeOfDay?.hour}0시 ${timeOfDay?.minute}분';
                       } else {
                         _selectedTime =
-                            '${timeOfDay?.hour}시  ${timeOfDay?.minute}분';
+                            '${timeOfDay?.hour}시 ${timeOfDay?.minute}분';
                       }
                     });
                   });
                 },
               ),
-              // Text('$_selectedTime'),
-              /*
-              option Selection 함수는 2 page 입력 란.
-               */
+              SizedBox(height: height * 0.04),
+              Container(
+              alignment: Alignment.bottomLeft,
+              child: Text('Cinema setting (Multiple selection possible)')),
               grey_grid(),
-              // Container(
-              //   padding: EdgeInsets.fromLTRB(0, 50, 0, 10),
-              //   alignment: Alignment.center,
-              //   child: Text('+추가조건설정',
-              //       style: TextStyle(
-              //         fontSize: 25,
-              //         fontWeight: FontWeight.bold,
-              //       )),
-              // ),
-              // Additional_Option(),
-              // /*추가 옵션 설정 부분 */
-              // SizedBox(height: 30),
-              // grey_grid(),
+              ToggleBrand(),
+              SizedBox(height: height * 0.03),
+              Container(
+                alignment: Alignment.bottomLeft,
+                child: Text('Number of pop-up lists')),
+              grey_grid(),
+              Container(
+                alignment: Alignment.center,
+                child: Text('< 팝업되는 리스트 개수 >')
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: Slider(
+                  value: count.toDouble(),
+                  min: 0.0,
+                  max: 100.0,
+                  activeColor: Color.fromARGB(255, 240, 191, 207),
+                  inactiveColor: Colors.grey,
+                  onChanged: (double newValue) {
+                    count = newValue.round() as double;
+                  },)
+              ),
+              grey_grid(),
+              SizedBox(height: height * 0.03),
               Confirm_Button(),
-              grey_grid(),
             ],
           ),
         ],

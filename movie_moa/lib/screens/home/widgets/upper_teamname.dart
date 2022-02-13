@@ -7,11 +7,14 @@ class Upper_TeamName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
+    final width = data.size.width;
+    final height = data.size.height;
     return Container(
-      margin: EdgeInsets.only(top: 50),
+      margin: EdgeInsets.only(top: width * 0.1),
       alignment: Alignment.center,
       child: Padding(
-        padding: EdgeInsets.only(left: 300),
+        padding: EdgeInsets.only(left: width * 0.8),
         child: Text(
           'TeamName!', // 어떻게 처리하지?
           style: TextStyle(
