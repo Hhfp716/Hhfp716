@@ -5,10 +5,13 @@ class logo_name extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
+    final width = data.size.width;
+    final height = data.size.height;
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 200),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, width * 0.1),
           child: Text(
             'AppName + TeamLogo',
             style: TextStyle(
@@ -22,7 +25,7 @@ class logo_name extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 40),
+              margin: EdgeInsets.only(top: width * 0.1),
               alignment: Alignment.center,
               child: Container(
                 alignment: Alignment.center,
@@ -37,9 +40,9 @@ class logo_name extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, width * 0.1, 0, 0),
                 child: Image.asset("assets/images/water_circle.png",
-                    width: 230, height: 230, fit: BoxFit.fill),
+                    width: width * 0.5, height: height * 0.3, fit: BoxFit.fill),
               ),
             ),
           ],
