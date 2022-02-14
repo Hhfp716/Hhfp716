@@ -23,32 +23,35 @@ class _LocationInputState extends State<LocationInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(16),
-        child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: TextField(
-              cursorColor: Colors.black.withOpacity(0.8),
-              keyboardType: TextInputType.streetAddress,
-              decoration: InputDecoration(
-                labelText: "현재 위치 입력",
-                filled: true,
-                fillColor: Colors.white,
-                prefixIcon: Icon(Icons.map_outlined, color: Colors.grey),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-              onChanged: (text) => {
-                location =
-                    text, //user input location value 가 variable 폴더 안에 있는 location 변수에 저장됨.
-              },
-            )));
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+            padding: EdgeInsets.all(16),
+            child: GestureDetector(
+                onTap: () => {FocusScope.of(context).unfocus()},
+                /*해당 칸에 입력 후, 다른 곳을 터치하면 키보드 사라짐*/
+                child: TextField(
+                  cursorColor: Colors.black.withOpacity(0.8),
+                  //keyboardType: TextInputType.streetAddress,
+                  decoration: InputDecoration(
+                    labelText: "현재 위치 입력",
+                    filled: true,
+                    fillColor: Colors.white,
+                    prefixIcon: Icon(Icons.map_outlined, color: Colors.grey),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                  onChanged: (text) => {
+                    location =
+                        text, //user input location value 가 variable 폴더 안에 있는 location 변수에 저장됨.
+                  },
+                ))));
   }
 }

@@ -19,6 +19,7 @@ class _SearchFunctionState extends State<SearchFunction> {
   bool isLoading = false;
   late List<String> autoCompleteData;
   late TextEditingController controller;
+  late FocusNode focusNode;
 
   late Iterable<String> searchHistory;
   List<String> searchHistory_ = [];
@@ -40,6 +41,13 @@ class _SearchFunctionState extends State<SearchFunction> {
     });
   }
 
+  /* @override
+  void dispose() {
+    focusNode.dispose();
+
+    super.dispose();
+  }*/
+
   @override
   void initState() {
     super.initState();
@@ -49,6 +57,8 @@ class _SearchFunctionState extends State<SearchFunction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
+        /*키보드가 올라오면서 화면 깨지는 현상 방지 */
         body: isLoading
             ? Center(
                 child: CircularProgressIndicator(),
@@ -93,6 +103,7 @@ class _SearchFunctionState extends State<SearchFunction> {
                       onSelected: (selectedString) {
                         if (selectedString != Null) {
                           searchHistory_.add(selectedString.toString());
+                          movieName = selectedString.toString();
                           //search_word.add(selectedString.toString());
                         }
                         print(selectedString);
@@ -100,6 +111,7 @@ class _SearchFunctionState extends State<SearchFunction> {
                       fieldViewBuilder:
                           (context, controller, focusNode, onEditingComplete) {
                         this.controller = controller;
+                        this.focusNode = focusNode;
                         return TextField(
                           controller: controller,
                           focusNode: focusNode,

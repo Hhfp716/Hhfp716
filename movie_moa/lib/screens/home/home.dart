@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_moa/component/variable.dart';
+import 'package:movie_moa/screens/etcService/login_success_page/login_success_page.dart';
 
 import 'package:movie_moa/screens/etcService/my_page.dart';
 
@@ -47,7 +48,8 @@ class _HomePageState extends State<HomePage> {
           case 1:
             page = CupertinoTabView(
               builder: (context) {
-                return CupertinoPageScaffold(child: MyPage()); /*마이페이지 창으로 이동*/
+                return CupertinoPageScaffold(
+                    child: loginSuccessScreen()); /*마이페이지 창으로 이동*/
               },
             );
             break;

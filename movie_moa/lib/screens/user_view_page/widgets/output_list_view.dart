@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_moa/component/variable.dart';
 import 'package:movie_moa/screens/home/widgets/grey_grid.dart';
 
 class Output_List_View extends StatelessWidget {
@@ -16,13 +17,9 @@ class Output_List_View extends StatelessWidget {
           ListTile(
             title: Text('<movie_list>'),
           ),
-          ListTile(
-              title: Text(
-                  '특송\nCGV 동대문/ 1관 10층/ 2050~2248/ 114\n서울시 중구 을지로6가 17-2 현대시티아울렛 10층/ 1544-1122')),
+          ListTile(title: Text(movieName)),
           grey_grid(),
-          ListTile(
-              title: Text(
-                  '특송\nCGV 동대문/ 1관 10층/ 2050~2248/ 114\n서울시 중구 을지로6가 17-2 현대시티아울렛 10층/ 1544-1122')),
+          ListTile(title: Text(location)),
           grey_grid(),
           ListTile(
               title: Text(
