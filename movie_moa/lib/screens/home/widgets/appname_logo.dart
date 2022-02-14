@@ -42,7 +42,9 @@ class logo_name extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.fromLTRB(0, width * 0.1, 0, 0),
                 child: Image.asset("assets/images/water_circle.png",
-                    width: width * 0.5, height: height * 0.3, fit: BoxFit.fill),
+                    width: width * 0.65,
+                    height: height * 0.3,
+                    fit: BoxFit.fill),
               ),
             ),
           ],

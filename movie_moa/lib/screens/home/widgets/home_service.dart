@@ -20,7 +20,7 @@ class _HomePageUiState extends State<HomePageUi> {
     final data = MediaQuery.of(context);
     final width = data.size.width;
     final height = data.size.height;
-    
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,9 +28,9 @@ class _HomePageUiState extends State<HomePageUi> {
           Upper_TeamName(), // 최상단 TeamName Bar
           grey_grid(),
           logo_name(), //App_Name + center logo
-          SizedBox(height: height*0.1),
+          SizedBox(height: height * 0.1),
           grey_grid(),
-          book_mark(), //파일 명 변경 예정, 개인 프로필 버튼
+          Profile(), //파일 명 변경 예정, 개인 프로필 버튼
           grey_grid(),
           SizedBox(height: height * 0.11),
           Container(
@@ -53,7 +53,7 @@ class _HomePageUiState extends State<HomePageUi> {
           //  다중선택 가능, 추후에 선택한 조건만 사용자가 입력하게끔?
           //  선택결과값이 null인 경우에는 next button 클릭시 경고메시지 팝업창
           SizedBox(height: height * 0.02),
-          Next_Button(), // Move to Nextpage Button
+          NextButton(), // Move to Nextpage Button
         ],
       ),
     );

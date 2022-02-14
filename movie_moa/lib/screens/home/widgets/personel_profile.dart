@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movie_moa/component/login_check.dart';
+import 'package:movie_moa/component/variable.dart';
 import 'package:movie_moa/screens/etcService/login_page/login_page.dart';
 import 'package:movie_moa/screens/etcService/login_success_page/login_success_page.dart';
 import 'package:movie_moa/screens/etcService/my_page.dart';
+import 'package:movie_moa/screens/home/home.dart';
 
-class book_mark extends StatelessWidget {
+class Profile extends StatelessWidget {
   //const book_mark({ Key? key }) : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class book_mark extends StatelessWidget {
               Icon(
                 Icons.star_border_outlined,
                 color: Color(0xFFFDBF30),
-                size: width*0.06,
+                size: width * 0.06,
               ),
               Container(
                 alignment: Alignment.center,
@@ -37,16 +38,8 @@ class book_mark extends StatelessWidget {
             ],
           ),
           onPressed: () => {
-            if (id_check & passwd_check)
-              {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => loginSuccessScreen())),
-              }
-            else
-              {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LoginScreen()))
-              }
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => LoginScreen()))
           },
         ),
       ],

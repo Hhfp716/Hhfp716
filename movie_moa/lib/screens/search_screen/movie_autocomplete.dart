@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:movie_moa/component/variable.dart';
 import 'package:movie_moa/constants/colors.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
@@ -28,7 +29,8 @@ class _SearchFunctionState extends State<SearchFunction> {
     });
     final String stringData = widget.hintText == "영화 검색"
         ? await rootBundle.loadString("assets/data.json")
-        : await rootBundle.loadString("assets/local.json");
+        : await rootBundle.loadString("assets/non.json");
+    //await rootBundle.loadString("assets/local.json");
     final List<dynamic> json = jsonDecode(stringData);
     final List<String> jsonStringData = json.cast<String>();
 
@@ -59,6 +61,7 @@ class _SearchFunctionState extends State<SearchFunction> {
                       optionsBuilder: (TextEditingValue textEditingValue) {
                         if (textEditingValue.text.isEmpty) {
                           return searchHistory_;
+                          //return search_word;
                         } else {
                           return autoCompleteData.where((word) => word
                               .toLowerCase()
@@ -72,9 +75,7 @@ class _SearchFunctionState extends State<SearchFunction> {
                           padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             final option = options.elementAt(index);
-
                             return ListTile(
-                              //title: Text(option.toString()),
                               title: SubstringHighlight(
                                 text: option.toString(),
                                 term: controller.text,
@@ -92,6 +93,7 @@ class _SearchFunctionState extends State<SearchFunction> {
                       onSelected: (selectedString) {
                         if (selectedString != Null) {
                           searchHistory_.add(selectedString.toString());
+                          //search_word.add(selectedString.toString());
                         }
                         print(selectedString);
                       },
@@ -115,10 +117,8 @@ class _SearchFunctionState extends State<SearchFunction> {
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: kGridColor),
                             ),
-                            hintText: widget.hintText,
-                            prefixIcon: widget.hintText == "영화 검색"
-                                ? Icon(Icons.movie_outlined)
-                                : Icon(Icons.map_outlined),
+                            labelText: widget.hintText,
+                            prefixIcon: Icon(Icons.movie_outlined),
                           ),
                         );
                       },
